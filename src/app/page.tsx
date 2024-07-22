@@ -2,6 +2,10 @@
 
 import Flow from "../components/Flow";
 
-export default async function App() {
-  return <Flow />;
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <Flow />
+    </div>
+  );
 }
