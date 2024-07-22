@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import {useCallback} from "react";
 import {
   Background,
   Controls,
@@ -14,6 +14,7 @@ import "@xyflow/react/dist/style.css";
 
 import { initialNodes, nodeTypes, type CustomNodeType } from "./nodes";
 import { initialEdges, edgeTypes, type CustomEdgeType } from "./edges";
+import {FlowDrawer} from "@/components/FlowDrawer";
 
 export default function App() {
   const [nodes, , onNodesChange] = useNodesState<CustomNodeType>(initialNodes);
@@ -35,6 +36,7 @@ export default function App() {
       onConnect={onConnect}
       fitView
     >
+      <FlowDrawer />
       <Background />
       <MiniMap />
       <Controls />
