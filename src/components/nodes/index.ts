@@ -9,7 +9,7 @@ export const initialNodes = [
     id: "a",
     type: "start",
     position: { x: 0, y: 0 },
-    data: { title: "Incoming message" },
+    data: { title: "Incoming conversation" },
   },
   {
     id: "b",
@@ -31,7 +31,7 @@ export const initialNodes = [
     id: "d",
     type: "end",
     position: { x: 0, y: 600 },
-    data: { label: "with React Flow" },
+    data: { title: "End conversation" },
   },
 ] satisfies Node[];
 
