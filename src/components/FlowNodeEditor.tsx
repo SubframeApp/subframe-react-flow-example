@@ -4,7 +4,6 @@ import React from "react";
 import { useReactFlow } from "@xyflow/react";
 import { DrawerLayout } from "@/subframe/layouts/DrawerLayout";
 import * as SubframeCore from "@subframe/core";
-import { Button } from "@/subframe/components/Button";
 import { IconWithBackground } from "@/subframe/components/IconWithBackground";
 import { RadioCardGroup } from "@/subframe/components/RadioCardGroup";
 import { TextField } from "@/subframe/components/TextField";
@@ -16,7 +15,7 @@ function FlowNodeEditor({node, open, onOpenChange}: {node: CustomNodeType, open:
   const reactFlow = useReactFlow();
 
   return (
-    <DrawerLayout open={open} onOpenChange={onOpenChange}>
+    <DrawerLayout className="bg-unset" open={open} onOpenChange={onOpenChange}>
       <div className="flex h-full w-96 flex-col items-start gap-6 bg-default-background pt-6 pr-6 pb-6 pl-6">
         <div className="flex w-full items-center gap-2">
           <SubframeCore.Icon
