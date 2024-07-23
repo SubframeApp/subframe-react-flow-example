@@ -26,28 +26,26 @@ export default function App() {
   );
 
   return (
-    <div className="relative w-full h-full">
-      <ReactFlow<CustomNodeType, CustomEdgeType>
-        nodes={nodes}
-        nodeTypes={nodeTypes}
-        onNodesChange={onNodesChange}
-        edges={edges}
-        edgeTypes={edgeTypes}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        defaultEdgeOptions={{
-          type: "flow-edge",
-          data: {
-            text: "New edge",
-          }
-        }}
-        fitView
-      >
-        <FlowEditorToolbar />
-        <FlowDrawer />
-        <Background />
-        <Controls />
-      </ReactFlow>
-    </div>
+    <ReactFlow<CustomNodeType, CustomEdgeType>
+      nodes={nodes}
+      nodeTypes={nodeTypes}
+      onNodesChange={onNodesChange}
+      edges={edges}
+      edgeTypes={edgeTypes}
+      onEdgesChange={onEdgesChange}
+      onConnect={onConnect}
+      defaultEdgeOptions={{
+        type: "flow-edge",
+        data: {
+          text: "New edge",
+        },
+      }}
+      fitView
+    >
+      <FlowEditorToolbar />
+      <FlowDrawer />
+      <Background />
+      <Controls />
+    </ReactFlow>
   );
 }
