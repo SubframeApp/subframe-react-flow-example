@@ -29,7 +29,9 @@ function FlowNodeEditor({node, open, onOpenChange}: {node: CustomNodeType, open:
         <RadioCardGroup
           className="h-auto w-full flex-none grid grid-cols-3"
           value={node.type}
-          onValueChange={(value: string) => {}}
+          onValueChange={(value: string) => {
+            reactFlow.updateNode(node.id, {type: value})
+          }}
         >
           <RadioCardGroup.RadioCard
             disabled={false}
@@ -127,17 +129,6 @@ function FlowNodeEditor({node, open, onOpenChange}: {node: CustomNodeType, open:
             }}
           />
         </TextArea>
-        <div className="flex w-full items-center gap-4">
-          <div className="flex grow shrink-0 basis-0 flex-col items-start">
-            <span className="text-body-bold font-body-bold text-default-font">
-              Enable desktop notifications
-            </span>
-            <span className="text-caption font-caption text-subtext-color">
-              Receive a notification on your desktop
-            </span>
-          </div>
-          <Switch checked={false} onCheckedChange={(checked: boolean) => {}} />
-        </div>
       </div>
     </DrawerLayout>
   );
