@@ -1,28 +1,28 @@
-import type { BuiltInNode, Node, NodeTypes } from "@xyflow/react";
+import type { NodeTypes } from "@xyflow/react";
 import PromptNode, { PromptNodeType } from "./PromptNode";
 import StartNode, { StartNodeType } from "./StartNode";
 import EndNode, { EndNodeType } from "./EndNode";
-import SmsNode from "./SmsNode";
+import SmsNode, { SmsNodeType } from "./SmsNode";
 
 export const initialNodes = [
   {
     id: "a",
     type: "start",
     position: { x: 0, y: 0 },
-    data: { title: "Incoming conversation" },
+    data: { name: "Incoming conversation", prompt: "Greet the customer in a friendly manner and ask what you can help with today.",  },
   },
   {
     id: "b",
     type: "sms",
     position: { x: -300, y: 300 },
-    data: { title: "Send lead a reminder", contents: "hey there" },
+    data: { name: "Send lead a reminder", prompt: "Craft an SMS message to send to the lead that answers the question." },
   },
   {
     id: "c",
     type: "prompt",
     position: { x: 300, y: 300 },
     data: {
-      title: "Prompt for loan details",
+      name: "Prompt for loan details",
       prompt:
         "Ask the customer for their loan details, such as loan number or property address. Once you have the necessary information, provide an update on the status of their loan and address any specific questions or concerns they may have.",
     },
@@ -31,9 +31,9 @@ export const initialNodes = [
     id: "d",
     type: "end",
     position: { x: 0, y: 600 },
-    data: { title: "End conversation" },
+    data: { name: "End conversation", prompt: "Thank the customer for their call and let them know you are available if they have any further questions or need additional assistance." },
   },
-] satisfies Node[];
+] satisfies CustomNodeType[];
 
 export const nodeTypes = {
   prompt: PromptNode,
@@ -44,7 +44,7 @@ export const nodeTypes = {
 
 // Append the types of you custom edges to the BuiltInNode type
 export type CustomNodeType =
-  | BuiltInNode
   | PromptNodeType
+  | SmsNodeType
   | StartNodeType
   | EndNodeType;
