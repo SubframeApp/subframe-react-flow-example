@@ -16,7 +16,6 @@ interface FlowNodeRootProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   badge?: string;
   icon?: SubframeCore.IconName;
-  variant?: "default";
   selected?: boolean;
   className?: string;
 }
@@ -28,7 +27,6 @@ const FlowNodeRoot = React.forwardRef<HTMLElement, FlowNodeRootProps>(
       children,
       badge,
       icon = "FeatherCheck",
-      variant = "default",
       selected = false,
       className,
       ...otherProps
@@ -47,7 +45,10 @@ const FlowNodeRoot = React.forwardRef<HTMLElement, FlowNodeRootProps>(
         <div
           className={SubframeCore.twClassNames(
             "flex w-full flex-col items-start gap-4 rounded border-2 border-solid border-neutral-border bg-default-background pt-4 pr-4 pb-4 pl-4 shadow-overlay group-hover/5749bf2e:border-2 group-hover/5749bf2e:border-solid group-hover/5749bf2e:border-neutral-300",
-            { "border-2 border-solid border-brand-primary": selected }
+            {
+              "border-2 border-solid border-brand-primary group-hover/5749bf2e:border-2 group-hover/5749bf2e:border-solid group-hover/5749bf2e:border-brand-primary":
+                selected,
+            }
           )}
         >
           <div className="flex w-full items-center gap-6">

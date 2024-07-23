@@ -1,21 +1,32 @@
 "use client";
 
-import React from "react";
-import { useReactFlow } from "@xyflow/react";
-import { DrawerLayout } from "@/subframe/layouts/DrawerLayout";
-import * as SubframeCore from "@subframe/core";
+import { CustomNodeType } from "@/components/nodes";
 import { IconWithBackground } from "@/subframe/components/IconWithBackground";
 import { RadioCardGroup } from "@/subframe/components/RadioCardGroup";
-import { TextField } from "@/subframe/components/TextField";
 import { TextArea } from "@/subframe/components/TextArea";
-import { Switch } from "@/subframe/components/Switch";
-import { CustomNodeType } from "@/components/nodes";
+import { TextField } from "@/subframe/components/TextField";
+import { DrawerLayout } from "@/subframe/layouts/DrawerLayout";
+import * as SubframeCore from "@subframe/core";
+import { useReactFlow } from "@xyflow/react";
+import React from "react";
 
-function FlowNodeEditor({node, open, onOpenChange}: {node: CustomNodeType, open: boolean, onOpenChange: (newOpen: boolean) => void}) {
+function FlowNodeEditor({
+  node,
+  open,
+  onOpenChange,
+}: {
+  node: CustomNodeType;
+  open: boolean;
+  onOpenChange: (newOpen: boolean) => void;
+}) {
   const reactFlow = useReactFlow();
 
   return (
-    <DrawerLayout className="bg-unset" open={open} onOpenChange={onOpenChange}>
+    <DrawerLayout
+      className="left-auto w-auto"
+      open={open}
+      onOpenChange={onOpenChange}
+    >
       <div className="flex h-full w-96 flex-col items-start gap-6 bg-default-background pt-6 pr-6 pb-6 pl-6">
         <div className="flex w-full items-center gap-2">
           <SubframeCore.Icon
@@ -30,7 +41,7 @@ function FlowNodeEditor({node, open, onOpenChange}: {node: CustomNodeType, open:
           className="h-auto w-full flex-none grid grid-cols-3"
           value={node.type}
           onValueChange={(value: string) => {
-            reactFlow.updateNode(node.id, {type: value})
+            reactFlow.updateNode(node.id, { type: value });
           }}
         >
           <RadioCardGroup.RadioCard
@@ -111,7 +122,7 @@ function FlowNodeEditor({node, open, onOpenChange}: {node: CustomNodeType, open:
             placeholder=""
             value={node.data.name}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              reactFlow.updateNodeData(node.id, {name: event.target.value})
+              reactFlow.updateNodeData(node.id, { name: event.target.value });
             }}
           />
         </TextField>
@@ -125,7 +136,7 @@ function FlowNodeEditor({node, open, onOpenChange}: {node: CustomNodeType, open:
             placeholder=""
             value={node.data.prompt}
             onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-              reactFlow.updateNodeData(node.id, {prompt: event.target.value})
+              reactFlow.updateNodeData(node.id, { prompt: event.target.value });
             }}
           />
         </TextArea>
