@@ -8,10 +8,10 @@ export type PromptNodeData = {
 
 export type PromptNodeType = Node<PromptNodeData, "prompt">;
 
-export default function PromptNode({ data }: NodeProps<PromptNodeType>) {
+export default function PromptNode({ data, selected }: NodeProps<PromptNodeType>) {
   return (
     <div>
-      <FlowNode badge="Prompt" icon="FeatherSparkles" title={data.name}>
+      <FlowNode badge="Prompt" icon="FeatherSparkles" name={data.name} selected={selected}>
         <span className="w-full text-body font-body text-subtext-color">
           {data.prompt}
         </span>

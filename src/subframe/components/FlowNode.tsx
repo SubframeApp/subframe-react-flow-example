@@ -12,22 +12,24 @@ import { IconWithBackground } from "./IconWithBackground";
 import { Badge } from "./Badge";
 
 interface FlowNodeRootProps extends React.HTMLAttributes<HTMLDivElement> {
-  title?: string;
+  name?: string;
   children?: React.ReactNode;
   badge?: string;
   icon?: SubframeCore.IconName;
-  variant?: "default" | "selected";
+  variant?: "default";
+  selected?: boolean;
   className?: string;
 }
 
 const FlowNodeRoot = React.forwardRef<HTMLElement, FlowNodeRootProps>(
   function FlowNodeRoot(
     {
-      title,
+      name,
       children,
       badge,
       icon = "FeatherCheck",
       variant = "default",
+      selected = false,
       className,
       ...otherProps
     }: FlowNodeRootProps,
@@ -45,24 +47,23 @@ const FlowNodeRoot = React.forwardRef<HTMLElement, FlowNodeRootProps>(
         <div
           className={SubframeCore.twClassNames(
             "flex w-full flex-col items-start gap-4 rounded border-2 border-solid border-neutral-border bg-default-background pt-4 pr-4 pb-4 pl-4 shadow-overlay group-hover/5749bf2e:border-2 group-hover/5749bf2e:border-solid group-hover/5749bf2e:border-neutral-300",
-            {
-              "border-2 border-solid border-brand-primary":
-                variant === "selected",
-            }
+            { "border-2 border-solid border-brand-primary": selected }
           )}
         >
-          <div className="flex w-full items-center gap-2">
-            <IconWithBackground
-              variant="neutral"
-              size="medium"
-              icon={icon}
-              square={true}
-            />
-            {title ? (
-              <span className="line-clamp-1 grow shrink-0 basis-0 text-heading-3 font-heading-3 text-default-font">
-                {title}
-              </span>
-            ) : null}
+          <div className="flex w-full items-center gap-6">
+            <div className="flex grow shrink-0 basis-0 items-center gap-2">
+              <IconWithBackground
+                variant="neutral"
+                size="small"
+                icon={icon}
+                square={true}
+              />
+              {name ? (
+                <span className="line-clamp-1 grow shrink-0 basis-0 text-heading-3 font-heading-3 text-default-font">
+                  {name}
+                </span>
+              ) : null}
+            </div>
             <Badge variant="neutral">{badge}</Badge>
           </div>
           {children ? (

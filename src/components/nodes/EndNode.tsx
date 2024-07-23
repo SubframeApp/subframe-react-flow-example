@@ -8,10 +8,10 @@ export type EndNodeData = {
 
 export type EndNodeType = Node<EndNodeData, "end">;
 
-export default function EndNode({ data }: NodeProps<EndNodeType>) {
+export default function EndNode({ data, selected }: NodeProps<EndNodeType>) {
   return (
     <div>
-      <FlowNode badge="End" icon="FeatherX" title={data.name}>
+      <FlowNode badge="End" icon="FeatherX" name={data.name} selected={selected}>
         <span className="w-full text-body font-body text-subtext-color">
           {data.prompt}
         </span>

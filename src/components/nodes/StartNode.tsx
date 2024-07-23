@@ -8,10 +8,10 @@ export type StartNodeData = {
 
 export type StartNodeType = Node<StartNodeData, "start">;
 
-export default function StartNode({ data }: NodeProps<StartNodeType>) {
+export default function StartNode({ data, selected }: NodeProps<StartNodeType>) {
   return (
     <div>
-      <FlowNode badge="Start" icon="FeatherPlay" title={data.name}>
+      <FlowNode badge="Start" icon="FeatherPlay" name={data.name} selected={selected}>
         <span className="w-full text-body font-body text-subtext-color">
           {data.prompt}
         </span>

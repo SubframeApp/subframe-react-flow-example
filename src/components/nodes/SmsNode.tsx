@@ -8,10 +8,10 @@ export type SmsNodeData = {
 
 export type SmsNodeType = Node<SmsNodeData, "sms">;
 
-export default function SmsNode({ data }: NodeProps<SmsNodeType>) {
+export default function SmsNode({ data, selected }: NodeProps<SmsNodeType>) {
   return (
     <div>
-      <FlowNode badge="SMS" icon="FeatherSparkles" title={data.name}>
+      <FlowNode badge="SMS" icon="FeatherSparkles" name={data.name} selected={selected}>
         <span className="w-full text-body font-body text-subtext-color">
           {data.prompt}
         </span>
