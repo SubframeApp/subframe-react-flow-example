@@ -109,7 +109,7 @@ function FlowNodeEditor({node, open, onOpenChange}: {node: CustomNodeType, open:
             placeholder=""
             value={node.data.name}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              reactFlow.updateNodeData(node.id, {title: event.target.value})
+              reactFlow.updateNodeData(node.id, {name: event.target.value})
             }}
           />
         </TextField>
