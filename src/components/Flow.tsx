@@ -35,6 +35,12 @@ export default function App() {
         edgeTypes={edgeTypes}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        defaultEdgeOptions={{
+          type: "flow-edge",
+          data: {
+            text: "New edge",
+          }
+        }}
         fitView
       >
         <FlowEditorToolbar />

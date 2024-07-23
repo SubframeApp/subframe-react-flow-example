@@ -3,9 +3,10 @@ import {
   EdgeLabelRenderer,
   getBezierPath,
   type EdgeProps,
-  type Edge,
+  type Edge, useReactFlow,
 } from "@xyflow/react";
 import {EdgeLabel} from "@/subframe/components/EdgeLabel";
+import {IconButton} from "@/subframe/components/IconButton";
 
 type FlowEdgeData = {
   text: string,
@@ -14,6 +15,7 @@ type FlowEdgeData = {
 export type FlowEdgeType = Edge<FlowEdgeData>;
 
 export default function FlowEdge({
+  id,
   data,
   sourceX,
   sourceY,
@@ -24,6 +26,7 @@ export default function FlowEdge({
   style = {},
   markerEnd,
 }: EdgeProps<FlowEdgeType>) {
+  const reactFlow = useReactFlow();
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -44,6 +47,13 @@ export default function FlowEdge({
             pointerEvents: 'all',
           }}
           text={data?.text}
+          actions={
+            <IconButton
+              size="small"
+              icon="FeatherX"
+              onClick={() => reactFlow.deleteElements({edges: [{id}]})}
+            />
+          }
         />
       </EdgeLabelRenderer>
     </>
